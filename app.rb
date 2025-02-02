@@ -4,6 +4,8 @@ require "dotenv/load"
 require "http"
 require "json"
 
+
+
 get("/") do
   api = ENV.fetch("key")
 
@@ -32,6 +34,12 @@ get("/:from_currency/:to_currency") do
   @destination_currency = params.fetch("to_currency")
 
   api_url = "https://api.exchangerate.host/convert?access_key=#{ENV.fetch("key")}&from=#{@original_currency}&to=#{@destination_currency}&amount=1"
+
+  response = HTTP.get(api_url).to_s
+  response = JSON.parse(response)
+
+ info = response.fetch("info")
+ @quote = info.fetch("quote")
   
 erb(:from_to)
 

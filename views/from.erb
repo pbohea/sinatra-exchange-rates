@@ -2,6 +2,11 @@
 
 <p>Go <a href="/">back</a>.</p>
 
+<ul>
+
 <% @xxx.each do |currency| %>
-    <li><a href="/:from_currency/:destination_currency">Convert 1<%=@original_currency%> to <%=currency%>...</a></li>
+    <li><a href="/<%=@original_currency%>/<%=currency%>">Convert 1 <%=@original_currency%> to <%=currency%>...</a></li>
   <% end %>
+
+
+</ul>
