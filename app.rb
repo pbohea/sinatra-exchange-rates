@@ -24,6 +24,7 @@ get("/:from_currency") do
   response = JSON.parse(response)
   currencies = response.fetch("currencies")
   @xxx = currencies.keys
+  erb(:from)
 end
 
 get("/:from_currency/:to_currency") do
@@ -32,5 +33,6 @@ get("/:from_currency/:to_currency") do
 
   api_url = "https://api.exchangerate.host/convert?access_key=#{ENV.fetch("key")}&from=#{@original_currency}&to=#{@destination_currency}&amount=1"
   
-  # Some more code to parse the URL and render a view template.
+erb(:from_to)
+
 end
